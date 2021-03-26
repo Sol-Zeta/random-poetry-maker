@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap');
+
+
+.select{
+    background-color: #fff5e6;
+    box-shadow: 0px 2px 4px rgba(36, 21, 0, 0.1);
+    border-radius: 3px;
+    padding: 9.5px 16px;
+    margin: 16px 0px;
+    width: 300px;
+    border: none;
+    width: 240px;
+
+    font-family: 'Inria Sans';
+    color: #241500;
+    font-size: 13px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+    color: #241500;
+
+    background: #fff5e6 url('./assets/down-arrow.png') 97% center no-repeat ;
+}
+
+.select:disabled{
+    opacity: 0.5;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .select{
+        margin: 12px 0px;
+        width: 80%;
+    }
+  }
+

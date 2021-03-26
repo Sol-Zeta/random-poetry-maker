@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap');
+
+.last-verse{
+    margin-bottom: 25px;
+}
+
+span{
+    margin: 2px 2px;
+}
+
+.chip-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 2%;
+}
+.poem-container{
+    margin: 0px 10%;
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+  
+
+    &__line{
+        color: #000;
+        font-family: 'Homemade Apple';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 40px;
+        letter-spacing: 0.25px;
+        opacity: 0;
+        animation-name: opacity-fade-in;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease;
+    }
+
+    @for $i from 0 through 80 {
+        &__line {         
+          &:nth-child(#{$i}) {
+            animation-delay: $i * (1s/5);
+          }
+        }
+      }
+    &--fading-in{
+        margin: 20px 2px;
+    }
+
+    @keyframes opacity-fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+.back-button{
+    background: #ED7D1A;
+    box-shadow: 0px 2px 8px rgba(38, 19, 3, 0.2);
+    border-radius: 3px;
+    border: none;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    padding: 11px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.back-button-img{
+    width: 16px;
+    height: 14px;
+}
+
+.back-button:hover{
+    background-color: #d07220;
+}
+
+@media only screen and (max-width: 768px) {
+   .mainContainer{
+        padding: 40px 40px 0px 40px;
+        height: calc(100vh - 40px);
+
+       &__line{
+        color: #000;
+        font-family: 'Inria Sans';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 300;
+        letter-spacing: 0.25px;
+    }
+    span{
+        margin: 0px;
+    }
+   }
+  }
