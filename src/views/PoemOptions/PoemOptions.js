@@ -23,7 +23,7 @@ export default function PoemOptions({ getValues, loading }) {
     
     useEffect( () => {
         const poetryData = new PoetryProvider()
-        const getAllAuthors = () => poetryData.getAuthors().then(res => setAllAuthors(res.filter(e => e._id !== 3)))
+        const getAllAuthors = () => poetryData.getAuthors().then(res => setAllAuthors(res))
         getAllAuthors()
     }, [])
     
