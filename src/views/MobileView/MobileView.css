@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6, p{
 .logo-container{
     display: flex;
     margin: 33px 0px 0px 0px;
-    align-items: end;
+    align-items: flex-end;
 }
 .logo{
     width: 33px;

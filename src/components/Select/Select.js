@@ -22,14 +22,16 @@ export default function Select({type, data, value, getValue, field}) {
             return data.map((e) => <option key={e} value={e}>{e}</option>)
         }
     }
-    const isDisabled = () => dataToRender?.length > 0 ? setDisabled(false) : setDisabled(true)
     
     useEffect(() => {
+        const ac = new AbortController();
         setDataToRender(data)
-    })
-
+        return () => ac.abort(); // Abort both fetches on unmount
+    },[data])
+    
     useEffect(() => {
-       isDisabled()
+        const isDisabled = () => dataToRender?.length > 0 ? setDisabled(false) : setDisabled(true)
+        isDisabled()
     }, [dataToRender])
 
 

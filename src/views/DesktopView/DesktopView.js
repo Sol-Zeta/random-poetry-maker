@@ -11,25 +11,30 @@ function DesktopView() {
   const [loading, setLoading] = useState(false);
   const [chips, setchips] = useState([]);
 
-  useEffect(async () => {
-    if(options){
-      const result = await Poemaker(options.paragraphs, options.verses, options.book, options.author)
-      setPoem(null);
-      setTimeout(() => {
-        setPoem({
-          paragraphs: options.paragraphs,
-          verses: options.verses,
-          text: result
-        });
-        setchips([
-          options.author,
-          options.book,
-          options.paragraphs,
-          options.verses,
-        ]);
-        setLoading(false);
-      }, 12000);
+  useEffect( () => {
+    const ac = new AbortController();
+    async function setAllData(){
+      if(options){
+        const result = await Poemaker(options.paragraphs, options.verses, options.book, options.author)
+        setPoem(null);
+        setTimeout(() => {
+          setPoem({
+            paragraphs: options.paragraphs,
+            verses: options.verses,
+            text: result
+          });
+          setchips([
+            options.author,
+            options.book,
+            options.paragraphs,
+            options.verses,
+          ]);
+          setLoading(false);
+        }, 12000);
+      }
     }
+    setAllData()
+    return () => ac.abort(); // Abort both fetches on unmount
   }, [options]);
 
   const getValues = (values) => {

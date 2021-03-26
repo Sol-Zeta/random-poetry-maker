@@ -14,21 +14,23 @@ export default function PoemOptions({ getValues, loading }) {
     const [paragraphs, setParagraphs] = useState(0)
     const [verses, setVerses] = useState(0)
 
-    const poetryData = new PoetryProvider()
 
-    const getAllAuthors = () => poetryData.getAuthors().then(res => setAllAuthors(res.filter(e => e._id !== 3)))
-    const getAllBooks = (id) => poetryData.getBooksByAuthor(id).then(res => setAuthorTitles(res))
 
+    
     const getSelectedAuthor = (value) => {
         setAuthor(Number(value))
     }
-
+    
     useEffect( () => {
+        const poetryData = new PoetryProvider()
+        const getAllAuthors = () => poetryData.getAuthors().then(res => setAllAuthors(res.filter(e => e._id !== 3)))
         getAllAuthors()
     }, [])
     
     useEffect(() => {
         if(author){
+            const poetryData = new PoetryProvider()
+            const getAllBooks = (id) => poetryData.getBooksByAuthor(id).then(res => setAuthorTitles(res))
             getAllBooks(author)
         }
     }, [author])
